@@ -1,0 +1,39 @@
+.card-1 {
+  background-color: #f5f8fe !important;
+  border-radius: 20px !important;
+  padding: 20px 20px;
+  color: #bbbed1;
+  transition: all 0.5s;
+}
+
+.card-1 .img img {
+  height: 44px;
+  vertical-align: middle;
+}
+
+.card-1 .img span {
+  margin-left: 20px;
+  font-weight: bold;
+  color: #1b1b54;
+}
+
+.card-1 .top-right {
+  float: right;
+}
+
+.card-1 .sm {
+  font-size: 14px;
+}
+
+.card-1:hover {
+  box-shadow: 0 0 20px 0 #d8d8d8;
+}
+
+.card-1 .block {
+  border-top: 1px solid #bbbed1;
+  padding: 12px;
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+}
