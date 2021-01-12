@@ -1,0 +1,8 @@
+.sub-panel {
+  background-color: #fff3f1 !important;
+  border-radius: 20px !important;
+  padding: 40px;
+  color: #1b1b54;
+  transition: all 0.5s;
+  margin-top: 40px;
+}

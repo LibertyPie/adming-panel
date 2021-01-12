@@ -7,6 +7,7 @@ import { routes } from "./routes";
 import { RouteWithSubRoutes } from "./helpers";
 import "./styles/common.css";
 import "./styles/card-1.css";
+import "./styles/sidePanel.css";
 
 class App extends Component {
 

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { AiOutlineClose } from "react-icons/ai";
 
 class Subcategories extends Component {
   state = {
@@ -7,8 +8,11 @@ class Subcategories extends Component {
   };
   render() {
     return (
-      <div className="subcategory">
-        <div className="">rught right</div>
+      <div className="sub-panel">
+        <div className="float-right link">
+          <AiOutlineClose onClick={this.props.close} />
+        </div>
+        <div className="">Bank with a long name</div>
       </div>
     );
   }
