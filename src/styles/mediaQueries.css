@@ -1,0 +1,76 @@
+@media (max-width: 992px) {
+  .sidebar {
+    width: 42%;
+  }
+
+  .sub-panel {
+    width: 700px;
+    max-width: 90%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation-name: drop-from-top;
+    z-index: 10;
+  }
+
+  .sub-panel-mask {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.2;
+  }
+
+  @keyframes drop-from-top {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 10%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-btn {
+    display: block !important;
+    width: 100px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+
+  .sidebar.active {
+    display: block;
+    z-index: 1;
+    width: calc(100% - 120px);
+    height: calc(100% - 30px);
+    top: 15px;
+  }
+
+  .sidebar .closing {
+    display: initial !important;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 576px) {
+  .outterPadding {
+    padding: 12px;
+  }
+
+  .sidebar.active {
+    width: calc(100% - 25px);
+  }
+}

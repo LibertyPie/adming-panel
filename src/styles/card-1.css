@@ -7,6 +7,10 @@
   margin-top: 40px;
 }
 
+.card-1 .img {
+  display: flex;
+}
+
 .card-1 .img img {
   height: 44px;
   vertical-align: middle;

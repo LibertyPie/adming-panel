@@ -112,6 +112,11 @@ a:hover {
   border-radius: 12px !important;
 }
 
+.btn-primary {
+  background-color: #4e93c9 !important;
+  border-color: #4e93c9 !important;
+}
+
 .clear {
   clear: both;
 }
@@ -144,6 +149,11 @@ a:hover {
   height: calc(100vh - 120px);
 }
 
+.sidebar-btn,
+.closing {
+  display: none !important;
+}
+
 .sidebar .profile {
   margin-top: 60px;
 }
@@ -157,6 +167,7 @@ a:hover {
   display: inline-block;
   vertical-align: middle;
   margin-left: 20px;
+  width: calc(100% - 70px);
 }
 
 .sidebar .profile .details .name {
@@ -167,6 +178,9 @@ a:hover {
 .sidebar .profile .details .adr {
   color: #8cbba5;
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar .links {
@@ -178,6 +192,10 @@ a:hover {
   color: #c9c8f5 !important;
   position: relative;
   font-size: 16px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar .links a::before {
@@ -201,7 +219,7 @@ a:hover {
 }
 
 .sidebar .links a span {
-  margin-left: 40px;
+  margin-left: 10%;
 }
 /* Sidebar Ends */
 

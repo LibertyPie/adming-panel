@@ -46,3 +46,7 @@
   padding: 12px;
   font-size: 14px;
 }
+
+.sub-panel-mask {
+  display: none;
+}
