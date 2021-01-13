@@ -1,6 +1,5 @@
 .outterPadding {
   padding: 60px;
-  overflow: hidden;
 }
 
 .logo {
@@ -83,6 +82,18 @@ input[type="submit"] {
   margin-left: 20px;
 }
 
+.ml0 {
+  margin-left: 0 !important;
+}
+
+.mr0 {
+  margin-right: 0 !important;
+}
+
+.w100p {
+  width: 100%;
+}
+
 a {
   color: #4d94ca !important;
 }
@@ -128,6 +139,8 @@ a:hover {
   padding: 60px 40px;
   color: #fff;
   box-shadow: 2px 5px 20px 4px #a9a9a9;
+  position: fixed;
+  width: 22%;
   height: calc(100vh - 120px);
 }
 

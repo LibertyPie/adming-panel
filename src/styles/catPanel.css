@@ -1,0 +1,6 @@
+.catWrap {
+  position: fixed;
+  width: 20%;
+  height: calc(100% - 220px);
+  overflow: scroll;
+}

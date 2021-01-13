@@ -4,5 +4,37 @@
   padding: 40px;
   color: #1b1b54;
   transition: all 0.5s;
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  animation-duration: 0.5s;
+  animation-name: run;
+  position: fixed;
+  width: 33%;
+  height: auto;
+}
+
+.sub-panel h1,
+.sub-panel h2,
+.sub-panel h3 {
+  color: #1b1b54;
+}
+
+@keyframes run {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 58%;
+  }
+}
+
+.sub-panel .table tr + tr {
+  margin-top: 20px;
+}
+
+.sub-panel .table tr td {
+  border: 0 !important;
+}
+
+.sub-panel .table {
+  color: #1b1b54;
 }
