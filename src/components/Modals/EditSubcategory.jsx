@@ -1,11 +1,9 @@
-import { Modal } from "react-bootstrap";
 import { Component } from "react";
+import { Modal } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 
-class Category extends Component {
-  state = {
-    show: false,
-  };
+class EditSubcategory extends Component {
+  state = { show: false };
 
   toggleModal = () => {
     this.setState({
@@ -22,15 +20,13 @@ class Category extends Component {
           onHide={this.toggleModal}
           aria-labelledby="contained-modal-title-vcenter"
           centered
+          className="subCat"
         >
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body>
-            <div className="catForm">
-              <div className="img">
-                <AiOutlinePlus />
-              </div>
+            <div className="subcatForm">
               <div className="name">
-                <input type="text" placeholder="Category Name" />
+                <input type="text" placeholder="Subategory Name" />
               </div>
             </div>
           </Modal.Body>
@@ -45,4 +41,4 @@ class Category extends Component {
   }
 }
 
-export default Category;
+export default EditSubcategory;

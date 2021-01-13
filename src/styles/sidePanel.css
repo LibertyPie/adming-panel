@@ -38,3 +38,11 @@
 .sub-panel .table {
   color: #1b1b54;
 }
+
+.addSubcat-btn {
+  border: 1px dashed #1b1b54;
+  cursor: pointer;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+}

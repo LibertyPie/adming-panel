@@ -210,7 +210,17 @@ a:hover {
   background-color: #f5f8fe;
 }
 
-.catForm .img {
+.subcatForm {
+  display: flex;
+  background-color: #fff3f1;
+}
+
+.subCat .modal-content {
+  background-color: #fff3f1 !important;
+}
+
+.catForm .img,
+.subcatForm .img {
   height: 72px;
   width: 60px;
   border: 1px dashed #c3c2bd;
@@ -221,16 +231,22 @@ a:hover {
   cursor: pointer;
 }
 
-.catForm .name {
+.catForm .name,
+.subcatForm .name {
   margin-left: 20px;
   width: calc(100% - 80px);
   margin-top: 8px;
 }
 
-.catForm .name input {
+.catForm .name input,
+.subcatForm .name input {
   background-color: #f5f8fe;
   font-weight: bold;
   color: #1b1b54;
+}
+
+.subcatForm .name input {
+  background-color: #fff3f1 !important;
 }
 
 /* .catForm .img,

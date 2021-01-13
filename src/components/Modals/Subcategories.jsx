@@ -6,6 +6,7 @@ import {
   AiFillDelete,
   AiOutlineCheck,
 } from "react-icons/ai";
+import EditSubcategory from "./EditSubcategory";
 
 class Subcategories extends Component {
   state = {
@@ -24,7 +25,9 @@ class Subcategories extends Component {
           <tr>
             <td width="60%">UPI</td>
             <td>
-              <AiFillEdit />
+              <EditSubcategory>
+                <AiFillEdit />
+              </EditSubcategory>
             </td>
             <td>
               <AiFillDelete />
@@ -58,6 +61,9 @@ class Subcategories extends Component {
             </td>
           </tr>
         </table>
+        <EditSubcategory>
+          <div className="addSubcat-btn">Add New</div>
+        </EditSubcategory>
       </div>
     );
   }
