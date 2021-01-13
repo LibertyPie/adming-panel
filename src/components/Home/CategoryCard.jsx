@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-// import { CategoryModal } from "../Modals/CategoryModal";
+import CategoryModal from "../Modals/CategoryModal";
 
 class CategoryCard extends Component {
   state = {};
@@ -9,11 +9,11 @@ class CategoryCard extends Component {
       <div className="card-1">
         <span className="sm">0 Sucategories</span>
         <div className="top-right">
-          {/* <CategoryModal>
+          <CategoryModal>
             <span className="link">
               <AiFillEdit />
             </span>
-          </CategoryModal> */}
+          </CategoryModal>
           <a href="" className="ml20px">
             <AiFillDelete />
           </a>

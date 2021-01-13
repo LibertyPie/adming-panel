@@ -11,6 +11,7 @@ import EditSubcategory from "./EditSubcategory";
 class Subcategories extends Component {
   state = {
     show: true,
+    subCat: ["UPI", "Net Banking", "IMPS"],
   };
   render() {
     return (
@@ -22,44 +23,22 @@ class Subcategories extends Component {
         <br />
         <br />
         <table className="table">
-          <tr>
-            <td width="60%">UPI</td>
-            <td>
-              <EditSubcategory>
-                <AiFillEdit />
-              </EditSubcategory>
-            </td>
-            <td>
-              <AiFillDelete />
-            </td>
-            <td>
-              <AiOutlineCheck />
-            </td>
-          </tr>
-          <tr>
-            <td width="60%">Net Banking</td>
-            <td>
-              <AiFillEdit />
-            </td>
-            <td>
-              <AiFillDelete />
-            </td>
-            <td>
-              <AiOutlineCheck />
-            </td>
-          </tr>
-          <tr>
-            <td width="60%">IMPS</td>
-            <td>
-              <AiFillEdit />
-            </td>
-            <td>
-              <AiFillDelete />
-            </td>
-            <td>
-              <AiOutlineCheck />
-            </td>
-          </tr>
+          {this.state.subCat.map((subcat) => (
+            <tr>
+              <td width="60%">{subcat}</td>
+              <td>
+                <EditSubcategory>
+                  <AiFillEdit />
+                </EditSubcategory>
+              </td>
+              <td>
+                <AiFillDelete />
+              </td>
+              <td>
+                <AiOutlineCheck />
+              </td>
+            </tr>
+          ))}
         </table>
         <EditSubcategory>
           <div className="addSubcat-btn">Add New</div>

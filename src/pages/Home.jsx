@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { AiFillEdit, AiFillDelete, AiFillFolderAdd } from "react-icons/ai";
+import { AiFillFolderAdd } from "react-icons/ai";
 import CategoryCard from "../components/Home/CategoryCard";
 import Category from "../components/Modals/CategoryModal";
 import Subcategories from "../components/Modals/Subcategories";
@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 class Home extends Component {
   state = {
     subCat: false,
+    categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   };
 
   toggleSubcat = () => {
@@ -58,37 +59,15 @@ class Home extends Component {
 
               {/* Main Page Content / Listing of categories */}
               <div className="row w100p ml0 mr0">
-                <div
-                  className={
-                    this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
-                  }
-                >
-                  <CategoryCard toggleCat={this.toggleSubcat} />
-                </div>
-
-                <div
-                  className={
-                    this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
-                  }
-                >
-                  <CategoryCard toggleCat={this.toggleSubcat} />
-                </div>
-
-                <div
-                  className={
-                    this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
-                  }
-                >
-                  <CategoryCard toggleCat={this.toggleSubcat} />
-                </div>
-
-                <div
-                  className={
-                    this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
-                  }
-                >
-                  <CategoryCard toggleCat={this.toggleSubcat} />
-                </div>
+                {this.state.categories.map((id) => (
+                  <div
+                    className={
+                      this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
+                    }
+                  >
+                    <CategoryCard toggleCat={this.toggleSubcat} />
+                  </div>
+                ))}
 
                 {this.props.loading && (
                   <div className="col-lg-4 col-md-12">
