@@ -4,12 +4,11 @@
   padding: 40px;
   color: #1b1b54;
   transition: all 0.5s;
-  /* margin-top: 40px; */
   animation-duration: 0.5s;
   animation-name: run;
   position: fixed;
   width: 33%;
-  height: auto;
+  height: calc(100% - 120px);
 }
 
 .sub-panel h1,

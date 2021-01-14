@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { AiFillFolder, AiFillIdcard } from "react-icons/ai";
+import { AiFillFolder, AiFillIdcard, AiOutlineClose } from "react-icons/ai";
 
 class Sidebar extends Component {
   state = {
@@ -23,7 +23,7 @@ class Sidebar extends Component {
         </button>
         <div className={"sidebar " + (this.state.active && " active")}>
           <div className="closing" onClick={this.toggleSidebar}>
-            X
+            <AiOutlineClose />
           </div>
           <div className="logo">
             <img src="https://libertypie.com/assets/img/logo.svg" alt="" />

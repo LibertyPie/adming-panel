@@ -12,6 +12,7 @@
     margin: auto;
     animation-name: drop-from-top;
     z-index: 10;
+    height: auto !important;
   }
 
   .sub-panel-mask {

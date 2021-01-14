@@ -34,9 +34,6 @@ class Subcategories extends Component {
               <td>
                 <AiFillDelete />
               </td>
-              <td>
-                <AiOutlineCheck />
-              </td>
             </tr>
           ))}
         </table>
