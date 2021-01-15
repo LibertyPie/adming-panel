@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 export function RouteWithSubRoutes(route) {
   return (
@@ -7,7 +7,8 @@ export function RouteWithSubRoutes(route) {
       path={route.path}
       render={props => (
         // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
+        (route.redirectTo ? <Redirect to={route.redirectTo} /> :
+        <route.component {...props} routes={route.routes} />)
       )}
     />
   );
