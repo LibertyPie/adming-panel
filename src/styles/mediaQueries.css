@@ -1,3 +1,5 @@
+/* Media queries defined for different screens to make styling responsive */
+
 @media (max-width: 992px) {
   .sidebar {
     width: 42%;

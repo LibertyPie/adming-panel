@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
+// Handle nested routes and guards
 export function RouteWithSubRoutes(route) {
   return (
     <Route
@@ -14,6 +15,10 @@ export function RouteWithSubRoutes(route) {
   );
 }
 
+// set cookie for x number of days
+// cname: name of the cookie
+// cvlue: value of the cookie
+// exdays: number of days
 export function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -21,10 +26,16 @@ export function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+// set a json cookie
+// cname: name of the cookie
+// cvlue: value of the cookie
+// exdays: number of days
 export function setJsonCookie(cname, cvalue, exdays) {
   setCookie(cname, JSON.stringify(cvalue), exdays);
 }
 
+// get cookies saved in the browser for name
+// cname: name of the cookie
 export function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(";");
@@ -40,10 +51,14 @@ export function getCookie(cname) {
   return "";
 }
 
+// get json cookies saved in the browser for name
+// cname: name of the cookie
 export function getJsonCookie(cname) {
   return JSON.parse(getCookie(cname));
 }
 
+
+// check if cookies exist
 export function checkCookie(cname) {
   var user = getCookie(cname);
   if (user != "") {
@@ -53,6 +68,8 @@ export function checkCookie(cname) {
   return false;
 }
 
+
+// Conver a string to slug
 export const slugToText = slug => {
   var words = slug.split("_");
 
@@ -64,6 +81,8 @@ export const slugToText = slug => {
   return words.join(" ");
 };
 
+
+// Get query string of the url
 export const getUrlVars = () => {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(

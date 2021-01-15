@@ -9,9 +9,10 @@ import reducer from "./reducers/root";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 
-
+// user redux thunk as a middleware for netwrok request
 const store = createStore(reducer, {}, applyMiddleware(thunk));
 
+// Scroll to top whenever page is changed
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
   return null;

@@ -1,6 +1,8 @@
 import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } from "../constants";
 
 
+// Common variable that will be used across all the pages
+
 const initialState = {
   web3: null,
   account: null,

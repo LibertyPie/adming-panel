@@ -10,6 +10,7 @@ class Home extends Component {
       <div>
         <div class="row justify-content-center">
           <div class="col-6 text-center">
+            {/* Button to ask for wallet permission */}
             <div className="connect-btn" onClick={this.props.connectWallet}>
               Connect
             </div>

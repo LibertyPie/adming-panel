@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { AiFillFolderAdd } from "react-icons/ai";
+import BreadCrumb from "../components/BreadCrumb";
 import CategoryCard from "../components/Home/CategoryCard";
 import Category from "../components/Modals/CategoryModal";
 import Subcategories from "../components/Modals/Subcategories";
@@ -11,6 +12,7 @@ class Categories extends Component {
     categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   };
 
+  // Toggle right side pannel for sub category
   toggleSubcat = () => {
     this.setState({
       subCat: !this.state.subCat,
@@ -24,6 +26,7 @@ class Categories extends Component {
           <div className="col-lg-3 col-md-6 col-sm-5">
             <Sidebar />
           </div>
+          {/* Change the layout in case side panel is active */}
           <div
             className={
               this.state.subCat
@@ -32,16 +35,8 @@ class Categories extends Component {
             }
           >
             <div className="p20px">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="#">Home</a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Category
-                  </li>
-                </ol>
-              </nav>
+              {/* Breadcrumbs */}
+              <BreadCrumb currentPage="Category" />
               <br />
 
               {/* Heading */}
@@ -69,6 +64,7 @@ class Categories extends Component {
                   </div>
                 ))}
 
+                {/* Loading card */}
                 {this.props.loading && (
                   <div className="col-lg-4 col-md-12">
                     {/* Card for the category */}
@@ -82,6 +78,8 @@ class Categories extends Component {
               {/* End of listing categories */}
             </div>
           </div>
+
+          {/* Subcategory panel */}
           {this.state.subCat && (
             <div className="col-md-4">
               <Subcategories close={this.toggleSubcat} />

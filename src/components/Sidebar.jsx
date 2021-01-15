@@ -15,21 +15,28 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
+        {/* Button for small screens to make the sidebar appear */}
         <button
           onClick={this.toggleSidebar}
           className="btn btn-primary btn-block sidebar-btn"
         >
           MENU
         </button>
+
+        {/* Sidebar starts */}
         <div className={"sidebar " + (this.state.active && " active")}>
           <div className="closing" onClick={this.toggleSidebar}>
             <AiOutlineClose />
           </div>
+
+          {/* Logo & Brand name */}
           <div className="logo">
             <img src="https://libertypie.com/assets/img/logo.svg" alt="" />
             <span>LibertyPie</span>
           </div>
+          {/* Logo & Brand name  END*/}
 
+          {/* Profile details start */}
           <div className="profile">
             <img
               src="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png"
@@ -41,7 +48,9 @@ class Sidebar extends Component {
                 0xf6f574224d28f52FeDE69a68E3Cb63411640E011
               </div>
             </div>
+            {/* Profile details end */}
 
+            {/* Link starts */}
             <div className="links">
               <a href="">
                 <AiFillFolder />
@@ -53,6 +62,7 @@ class Sidebar extends Component {
                 <span>Permission Manager</span>
               </a>
             </div>
+            {/* Linnk Ends, */}
           </div>
         </div>
       </div>

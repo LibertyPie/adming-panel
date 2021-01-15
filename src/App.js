@@ -18,16 +18,19 @@ class App extends Component {
 
 
   componentDidMount(){
+    //on load check if user is already connected, if so load web3
     this.props.connectIfAuthorized();
   }
 
   render() {
     return (
       <div className="App">
+        {/* Switch between routes */}
         <Switch>
+          {/* Loop through routes defined under routes.js page */}
               {routes.map((route, i) => (
-
                 <RouteWithSubRoutes key={i} {...route} 
+                // Logic to redirect users / guard logic
                   redirectTo={(route.auth == "guests" && this.props.web3)? USER_REDIRECT : ((route.auth == "users" && !this.props.web3)? GUEST_REDIRECT : false )}
                   />
               ))}

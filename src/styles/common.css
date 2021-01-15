@@ -1,3 +1,5 @@
+/* Common styles used under almost every page */
+
 .outterPadding {
   padding: 60px;
 }
@@ -223,6 +225,8 @@ a:hover {
 }
 /* Sidebar Ends */
 
+/* Forms & modals*/
+
 .catForm {
   display: flex;
   background-color: #f5f8fe;
@@ -266,6 +270,8 @@ a:hover {
 .subcatForm .name input {
   background-color: #fff3f1 !important;
 }
+
+/* Forms and modals end, */
 
 .connect-btn {
   cursor: pointer;

@@ -1,3 +1,5 @@
+/* card design */
+
 .card-1 {
   background-color: #f5f8fe !important;
   border-radius: 20px !important;
@@ -30,10 +32,13 @@
   font-size: 14px;
 }
 
-.card-1:hover {
+/* if card is active or is in hover mode */
+.card-1:hover,
+.card-1.active {
   box-shadow: 0 0 20px 0 #d8d8d8;
 }
 
+/* button used under the card */
 .card-1 .block {
   border-top: 1px solid #bbbed1;
   padding: 12px;

@@ -1,6 +1,7 @@
+// Set the configuration file before you install
+
 export const NETWORK_ID = 3;
-export const TOKEN_ADDRESS = "0xb625FcD992Ac2A0Fb7F4F011B6158b3F4F69CbdA";
-export const LOTTERY_CONTRACT_ADDRESS = "0xb625FcD992Ac2A0Fb7F4F011B6158b3F4F69CbdA";
+export const TOKEN_ADDRESS = "";
 
 export const GUEST_REDIRECT = "/";
 export const USER_REDIRECT = "/categories";
