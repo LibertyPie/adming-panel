@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { AiFillFolder, AiFillIdcard, AiOutlineClose } from "react-icons/ai";
+import { connect } from "react-redux";
 
 class Sidebar extends Component {
   state = {
@@ -43,10 +44,8 @@ class Sidebar extends Component {
               alt=""
             />
             <div className="details">
-              <div className="name">Rahul</div>
-              <div className="adr">
-                0xf6f574224d28f52FeDE69a68E3Cb63411640E011
-              </div>
+              <div className="name">Admin</div>
+              <div className="adr">{this.props.account}</div>
             </div>
             {/* Profile details end */}
 
@@ -70,4 +69,14 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  const { account, loading, error } = state.common;
+
+  return {
+    account,
+    loading,
+    error,
+  };
+};
+
+export default connect(mapStateToProps, null)(Sidebar);
