@@ -58,14 +58,19 @@ input::placeholder {
   font-weight: bold;
 }
 
+label {
+  color: #3d3f74;
+  font-size: 14px;
+}
+
 input[type="text"] {
-  background-color: #ecdeff;
-  border: 0;
+  /* background-color: #ecdeff; */
+  border: 1px solid #dcdce8;
   height: 52px;
-  padding: 12px;
-  color: #656565;
+  padding: 20px;
+  color: #3d3f74;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 input[type="submit"] {
@@ -286,4 +291,27 @@ a:hover {
   margin-top: 20%;
   text-transform: uppercase;
   border-radius: 20px;
+}
+
+.connect-btn.small {
+  font-size: 14px;
+  min-width: 160px;
+  text-align: center;
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.card-2 {
+  background-color: #f9fbff !important;
+  border-radius: 20px !important;
+  padding: 40px;
+  color: #bbbed1;
+  margin-top: 40px;
+}
+
+.point {
+  display: list-item; /* This has to be "list-item"                                               */
+  list-style-type: disc; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+  list-style-position: inside;
+  /* color: #f1c9c3; */
 }
