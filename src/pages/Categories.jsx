@@ -5,11 +5,13 @@ import CategoryCard from "../components/Home/CategoryCard";
 import Category from "../components/Modals/CategoryModal";
 import Subcategories from "../components/Modals/Subcategories";
 import Sidebar from "../components/Sidebar";
+import { connect } from "react-redux";
+import { getCategories } from "../actions/categoryActions";
 
 class Categories extends Component {
   state = {
     subCat: false,
-    categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    categories: [],
   };
 
   // Toggle right side pannel for sub category
@@ -18,6 +20,10 @@ class Categories extends Component {
       subCat: !this.state.subCat,
     });
   };
+
+  async componentDidMount() {
+    await this.props.getCategories(this.props.contract);
+  }
 
   render() {
     return (
@@ -69,7 +75,7 @@ class Categories extends Component {
                   <div className="col-lg-4 col-md-12">
                     {/* Card for the category */}
                     <div className="card-1 text-center">
-                      <img src="https://i.stack.imgur.com/hzk6C.gif" alt="" />
+                      <img src="/images/loading.gif" alt="" />
                     </div>
                     {/* Card Ends */}
                   </div>
@@ -92,4 +98,17 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+const mapStateToProps = (state) => {
+  const { contract } = state.common;
+  const { list, loading, error } = state.category;
+
+  return { contract, list, loading, error };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCategories: (contract) => dispatch(getCategories(contract)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

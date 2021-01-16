@@ -1,13 +1,13 @@
-import { CONTRACT_ADDRESS } from "../config";
-import { CATEGORY_CONTRACT_INIT } from "../constants";
-import {libertypie_core } from '../abi/libertypie_core'
+import { CATEGORY_LIST_REQUEST, CATEGORY_LIST_ERROR, CATEGORY_LIST_SUCCESS } from "../constants";
 
-export const initContract = () =>  async dispatch =>  {
-    let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
-
-    dispatch({type: CATEGORY_CONTRACT_INIT, contract: contract});
-}
 
 export const getCategories = (contract) => async dispatch => {
-    let categories = await contract.getPaymentTypesCategories().call();
+    dispatch({type: CATEGORY_LIST_REQUEST});
+    try{
+        let categories = await contract.getPaymentTypesCategories().call();
+
+        dispatch({type: CATEGORY_LIST_SUCCESS, list: categories});
+    }catch(e){
+        dispatch({type: CATEGORY_LIST_ERROR});
+    }
 }

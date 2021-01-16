@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } from "../constants";
 
 
@@ -5,6 +6,7 @@ import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } 
 
 const initialState = {
   web3: null,
+  contract: null,
   account: null,
   loading: false,
   error: false
@@ -15,6 +17,9 @@ export default function(state = initialState, action) {
     case WALLET_CONNECT_REQUEST:
       return {
         ...state,
+        web3: null,
+        contract: null,
+        account: null,
         loading: true
       }
       break;
@@ -22,6 +27,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         web3: action.web3,
+        contract: action.contract,
         account: action.account,
         loading: false
       }
@@ -30,6 +36,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         web3: null,
+        contract: null,
         account: null,
         loading: false,
         error: true

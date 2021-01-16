@@ -1,4 +1,6 @@
 import Web3 from "web3";
+import { libertypie_core } from "../abi/libertypie_core";
+import { CONTRACT_ADDRESS } from "../config";
 import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } from "../constants";
 
 export const connectWallet = () => async dispatch =>  {
@@ -21,9 +23,11 @@ export const connectWallet = () => async dispatch =>  {
           
             var accounts = await web3.eth.getAccounts();
             var firstAcc = accounts[0];
+
+            let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
           
             hookInWalletChange();
-            dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, account: firstAcc});
+            dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, account: firstAcc});
         } catch (error) {
             dispatch({type: WALLET_CONNECT_ERROR});
             console.error(error);
@@ -34,9 +38,10 @@ export const connectWallet = () => async dispatch =>  {
   
         var accounts = await web3.eth.getAccounts();
         var firstAcc = accounts[0];
-  
+
+        let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
         hookInWalletChange();
-        dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, account: firstAcc});
+        dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, account: firstAcc});
     }else {
         dispatch({type: WALLET_CONNECT_ERROR});
         console.log("Not connected!");
@@ -54,8 +59,9 @@ export const connectIfAuthorized = () => async dispatch =>  {
             if(accounts.length > 0){
                 var firstAcc = accounts[0];
 
+                let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
                 hookInWalletChange();
-                dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, account: firstAcc});
+                dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, account: firstAcc});
             }
         }catch (error) {
         }
