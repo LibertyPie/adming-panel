@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { AiFillFolder, AiFillIdcard, AiOutlineClose } from "react-icons/ai";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Sidebar extends Component {
   state = {
@@ -51,15 +52,15 @@ class Sidebar extends Component {
 
             {/* Link starts */}
             <div className="links">
-              <a href="">
+              <Link to="/categories">
                 <AiFillFolder />
                 <span>Categories</span>
-              </a>
+              </Link>
 
-              <a href="">
+              <Link to="/permission-manager">
                 <AiFillIdcard />
                 <span>Permission Manager</span>
-              </a>
+              </Link>
             </div>
             {/* Linnk Ends, */}
           </div>
