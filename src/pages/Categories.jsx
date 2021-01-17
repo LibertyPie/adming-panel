@@ -100,7 +100,7 @@ class Categories extends Component {
 
 const mapStateToProps = (state) => {
   const { contract } = state.common;
-  const { list, loading, error } = state.category;
+  const { list, loading, error } = state.categoryList;
 
   return { contract, list, loading, error };
 };

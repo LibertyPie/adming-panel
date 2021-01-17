@@ -1,35 +1,70 @@
-import { CATEGORY_LIST_REQUEST, CATEGORY_LIST_ERROR, CATEGORY_LIST_SUCCESS } from "../constants";
+import { CATEGORY_CU_REQUEST, CATEGORY_CU_SUCCESS, CATEGORY_CU_ERROR,
+ CATEGORY_SINGLE_REQUEST, CATEGORY_SINGLE_SUCCESS, CATEGORY_SINGLE_ERROR } from "../constants";
 
 const initialState = {
-  list: [],
+  id: null,
+  category_name: "",
   loading: false,
   error: false
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-      case CATEGORY_LIST_REQUEST: 
+    case CATEGORY_CU_REQUEST:
       return {
-          ...state,
-          error: false,
-          loading: true
+        ...state,
+        error: false,
+        loading: true
       }
       break;
-      case CATEGORY_LIST_SUCCESS:
-        return {
-          ...state,
-          list: action.list,
-          error: false,
-          loading: false
-        }
+
+    case CATEGORY_CU_SUCCESS:
+
+      return {
+        ...state,
+        id: action.id,
+        category_name: action.category,
+        error: false,
+        loading: true
+      }
       break;
-      case CATEGORY_LIST_ERROR:
-        return {
-          ...state,
-          list: [],
-          error:true
-        }
-      default:
-          return state;
+
+    case CATEGORY_CU_ERROR:
+      return {
+        ...state,
+        error: false,
+        loading: true
+      }
+      break;
+      
+      
+      case CATEGORY_SINGLE_REQUEST:
+      return {
+        ...state,
+        error: false,
+        loading: true
+      }
+      break;
+
+    case CATEGORY_SINGLE_SUCCESS:
+      return {
+        ...state,
+        id: action.id,
+        category_name: action.category,
+        error: false,
+        loading: true
+      }
+      break;
+
+    case CATEGORY_SINGLE_ERROR:
+      return {
+        ...state,
+        error: false,
+        loading: true
+      }
+      break;
+
+    default:
+      return state;
   }
 }

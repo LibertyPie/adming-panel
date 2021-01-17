@@ -1,16 +1,59 @@
 import { Modal } from "react-bootstrap";
 import { Component } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { connect } from "react-redux";
+import {
+  createNewCategory,
+  getCategories,
+  getSingleCategory,
+  updateCategory,
+} from "../../actions/categoryActions";
 
 class CategoryModal extends Component {
   state = {
     show: false,
+    name: "",
   };
 
   toggleModal = () => {
     this.setState({
       show: !this.state.show,
     });
+  };
+
+  async componentDidMount() {
+    if (this.props.categoryId) {
+      await this.props.getSingleCategory(
+        this.props.categoryId,
+        this.props.contract
+      );
+
+      this.setState({
+        name: this.props.category_name,
+      });
+    }
+  }
+
+  updateName = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
+  saveCategory = async () => {
+    if (this.props.categoryId) {
+      await this.props.updateCategory(
+        this.props.categoryId,
+        this.state.name,
+        this.props.contract
+      );
+    } else {
+      await this.createNewCategory(this.state.name, this.props.contract);
+    }
+
+    if (!this.props.error) {
+      await this.props.getCategories(this.props.contract);
+    }
   };
 
   render() {
@@ -30,12 +73,17 @@ class CategoryModal extends Component {
                 <AiOutlinePlus />
               </div>
               <div className="name">
-                <input type="text" placeholder="Category Name" />
+                <input
+                  type="text"
+                  placeholder="Category Name"
+                  value={this.state.name}
+                  onChange={this.updateName}
+                />
               </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="link" onClick={this.toggleModal}>
+            <div className="link" onClick={this.saveCategory}>
               Save
             </div>
           </Modal.Footer>
@@ -45,4 +93,23 @@ class CategoryModal extends Component {
   }
 }
 
-export default CategoryModal;
+const mapStateToProps = (state) => {
+  const { contract } = state.common;
+  const { id, category_name, loading, error } = state.category;
+
+  return { contract, id, category_name, loading, error };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSingleCategory: (id, contract) =>
+      dispatch(getSingleCategory(id, contract)),
+    createNewCategory: (name, contract) =>
+      dispatch(createNewCategory(name, contract)),
+    updateCategory: (id, name, contract) =>
+      dispatch(updateCategory(id, name, contract)),
+    getCategories: (contract) => dispatch(getCategories(contract)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryModal);
