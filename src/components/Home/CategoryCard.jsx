@@ -1,9 +1,14 @@
 import { Component } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import CategoryModal from "../Modals/CategoryModal";
+import { Component } from "react";
 
 class CategoryCard extends Component {
   state = {};
+
+  deleteCategory = async() => {
+    await this.props.deleteCategory(this.props.id, this.props.contract);
+  }
   render() {
     return (
       <div className="card-1">
@@ -14,12 +19,12 @@ class CategoryCard extends Component {
               <AiFillEdit />
             </span>
           </CategoryModal>
-          <a href="" className="ml20px">
+          <span className="ml20px" onClick={this.deleteCategory}>
             <AiFillDelete />
-          </a>
+          </span>
         </div>
         <br />
-        <br />
+        <br />j
         <div className="clear"></div>
         <div className="img">
           <img
@@ -37,4 +42,17 @@ class CategoryCard extends Component {
   }
 }
 
-export default CategoryCard;
+const mapStateToProps = (state) => {
+  const { contract } = state.common;
+  const { errorDelete, loadingDelete } = state.category;
+
+  return { contract, errorDelete, loadingDelete };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteCategory: (id, contract) => dispatch(deleteCategory(id, contract)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)CategoryCard;

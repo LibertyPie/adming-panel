@@ -1,6 +1,11 @@
 import { CATEGORY_LIST_REQUEST, CATEGORY_LIST_ERROR, CATEGORY_LIST_SUCCESS,
 CATEGORY_CU_REQUEST, CATEGORY_CU_ERROR, CATEGORY_CU_SUCCESS,
-CATEGORY_SINGlE_REQUEST, CATEGORY_SINGlE_ERROR, CATEGORY_SINGlE_SUCCESS   } from "../constants";
+CATEGORY_SINGLE_REQUEST,   
+CATEGORY_SINGLE_SUCCESS,
+CATEGORY_SINGLE_ERROR,
+CATEGORY_DELETE_REQUEST,
+CATEGORY_DELETE_SUCCESS,
+CATEGORY_DELETE_ERROR} from "../constants";
 
 
 export const getCategories = (contract) => async dispatch => {
@@ -45,5 +50,16 @@ export const updateCategory = (id, name, contract) => async dispatch => {
         dispatch({type: CATEGORY_CU_SUCCESS, id: id, category: name});
     }catch(e){
         dispatch({type: CATEGORY_CU_ERROR});
+    }
+}
+
+export const deleteCategory = (id, contract) => async dispatch => {
+    dispatch({type: CATEGORY_DELETE_REQUEST});
+    try{
+        await contract.deletePaymentTypeCategory(id).call();
+
+        dispatch({type: CATEGORY_DELETE_SUCCESS });
+    }catch(e){
+        dispatch({type: CATEGORY_DELETE_ERROR});
     }
 }
