@@ -1,9 +1,11 @@
-import { CATEGORY_CU_REQUEST, CATEGORY_CU_SUCCESS, CATEGORY_CU_ERROR,
- CATEGORY_SINGLE_REQUEST, CATEGORY_SINGLE_SUCCESS, CATEGORY_SINGLE_ERROR, CATEGORY_DELETE_REQUEST, CATEGORY_DELETE_SUCCESS, CATEGORY_DELETE_ERROR } from "../constants";
+import { SUBCATEGORY_CU_REQUEST, SUBCATEGORY_CU_SUCCESS, SUBCATEGORY_CU_ERROR,
+ SUBCATEGORY_SINGLE_REQUEST, SUBCATEGORY_SINGLE_SUCCESS, SUBCATEGORY_SINGLE_ERROR,
+  SUBCATEGORY_DELETE_REQUEST, SUBCATEGORY_DELETE_SUCCESS, SUBCATEGORY_DELETE_ERROR } from "../constants";
 
 const initialState = {
   id: null,
-  category_name: "",
+  cat_id: null,
+  subcategory_name: "",
   errorDelete: false,
   loadingDelete: false,
   loading: false,
@@ -12,7 +14,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case CATEGORY_CU_REQUEST:
+    case SUBCATEGORY_CU_REQUEST:
       return {
         ...state,
         error: false,
@@ -20,18 +22,19 @@ export default function (state = initialState, action) {
       }
       break;
 
-    case CATEGORY_CU_SUCCESS:
+    case SUBCATEGORY_CU_SUCCESS:
 
       return {
         ...state,
         id: action.id,
-        category_name: action.category,
+        cat_id: action.cat_id,
+        subcategory_name: action.name,
         error: false,
         loading: true
       }
       break;
 
-    case CATEGORY_CU_ERROR:
+    case SUBCATEGORY_CU_ERROR:
       return {
         ...state,
         error: false,
@@ -40,7 +43,7 @@ export default function (state = initialState, action) {
       break;
       
       
-      case CATEGORY_SINGLE_REQUEST:
+      case SUBCATEGORY_SINGLE_REQUEST:
       return {
         ...state,
         error: false,
@@ -48,17 +51,18 @@ export default function (state = initialState, action) {
       }
       break;
 
-    case CATEGORY_SINGLE_SUCCESS:
+    case SUBCATEGORY_SINGLE_SUCCESS:
       return {
         ...state,
         id: action.id,
-        category_name: action.category,
+        cat_id: action.cat_id,
+        subcategory_name: action.category,
         error: false,
         loading: true
       }
       break;
 
-    case CATEGORY_SINGLE_ERROR:
+    case SUBCATEGORY_SINGLE_ERROR:
       return {
         ...state,
         error: false,
@@ -67,7 +71,7 @@ export default function (state = initialState, action) {
       break;
 
 
-    case CATEGORY_DELETE_REQUEST:
+    case SUBCATEGORY_DELETE_REQUEST:
       return {
         ...state,
         errorDelete: false,
@@ -75,7 +79,7 @@ export default function (state = initialState, action) {
       }
       break;
 
-    case CATEGORY_DELETE_SUCCESS:
+    case SUBCATEGORY_DELETE_SUCCESS:
       return {
         ...state,
         errorDelete: false,
@@ -83,7 +87,7 @@ export default function (state = initialState, action) {
       }
       break;
 
-    case CATEGORY_DELETE_ERROR:
+    case SUBCATEGORY_DELETE_ERROR:
       return {
         ...state,
         errorDelete: true,

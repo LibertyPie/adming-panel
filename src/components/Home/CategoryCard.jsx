@@ -1,14 +1,15 @@
 import { Component } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { deleteCategory } from "../../actions/categoryActions";
 import CategoryModal from "../Modals/CategoryModal";
-import { Component } from "react";
+import { connect } from "react-redux";
 
 class CategoryCard extends Component {
   state = {};
 
-  deleteCategory = async() => {
+  deleteCategory = async () => {
     await this.props.deleteCategory(this.props.id, this.props.contract);
-  }
+  };
   render() {
     return (
       <div className="card-1">
@@ -24,8 +25,7 @@ class CategoryCard extends Component {
           </span>
         </div>
         <br />
-        <br />j
-        <div className="clear"></div>
+        <br />j<div className="clear"></div>
         <div className="img">
           <img
             src="https://img.icons8.com/officel/2x/bank-building.png"
@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)CategoryCard;
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryCard);
