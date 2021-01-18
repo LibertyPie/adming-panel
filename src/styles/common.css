@@ -315,3 +315,30 @@ a:hover {
   list-style-position: inside;
   /* color: #f1c9c3; */
 }
+
+.role-selector {
+  display: flex;
+  border: 1px solid #dcdce8;
+  border-radius: 20px;
+}
+
+.role-selector select {
+  border: 0;
+  width: 30%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  color: #3d3f74;
+  border-left: 1px solid #dcdce8;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.role-selector input {
+  width: 70%;
+  border: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
