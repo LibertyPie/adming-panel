@@ -7,6 +7,7 @@ import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } 
 const initialState = {
   web3: null,
   contract: null,
+  permissionManager: null,
   account: null,
   loading: false,
   error: false
@@ -28,6 +29,7 @@ export default function(state = initialState, action) {
         ...state,
         web3: action.web3,
         contract: action.contract,
+        permissionManager: action.permissionManager,
         account: action.account,
         loading: false
       }

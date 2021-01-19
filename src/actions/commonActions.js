@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { libertypie_core } from "../abi/libertypie_core";
-import { CONTRACT_ADDRESS } from "../config";
+import { CONTRACT_ADDRESS, PERMISSION_MANAGER_CONTRACT } from "../config";
 import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } from "../constants";
 
 export const connectWallet = () => async dispatch =>  {
@@ -25,9 +25,11 @@ export const connectWallet = () => async dispatch =>  {
             var firstAcc = accounts[0];
 
             let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
+
+            let permissionManager = new web3.eth.Contract(libertypie_core, PERMISSION_MANAGER_CONTRACT);
           
             hookInWalletChange();
-            dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, account: firstAcc});
+            dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, permissionManager: permissionManager, account: firstAcc});
         } catch (error) {
             dispatch({type: WALLET_CONNECT_ERROR});
             console.error(error);
@@ -40,8 +42,10 @@ export const connectWallet = () => async dispatch =>  {
         var firstAcc = accounts[0];
 
         let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
+
+        let permissionManager = new web3.eth.Contract(libertypie_core, PERMISSION_MANAGER_CONTRACT);
         hookInWalletChange();
-        dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, contract: contract, account: firstAcc});
+        dispatch({type: WALLET_CONNECT_SUCCESS, web3: web3, permissionManager: permissionManager, contract: contract, account: firstAcc});
     }else {
         dispatch({type: WALLET_CONNECT_ERROR});
         console.log("Not connected!");

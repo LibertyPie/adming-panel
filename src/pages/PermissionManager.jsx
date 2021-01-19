@@ -11,7 +11,7 @@ class PermissionManager extends Component {
   };
 
   async componentDidMount() {
-    await this.props.getRole(this.props.account, this.props.contract);
+    await this.props.getRole(this.props.account, this.props.permissionManager);
   }
 
   updateRole = (event) => {
@@ -30,7 +30,7 @@ class PermissionManager extends Component {
     await this.props.updateRole(
       this.state.addr,
       this.state.role,
-      this.props.contract
+      this.props.permissionManager
     );
   };
 
@@ -100,7 +100,7 @@ class PermissionManager extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { contract, account } = state.common;
+  const { permissionManager, account } = state.common;
   const {
     role,
     updateLoading,
@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {
   } = state.permissionManager;
 
   return {
-    contract,
+    permissionManager,
     account,
     role,
     updateLoading,
