@@ -18,7 +18,7 @@ import {
 /**
  * Get role of an address
  * @param {address} addr
- * @param {contract object} web3
+ * @param {contract object} contract
  */
 export const getRole = (addr, contract) => async dispatch => {
     dispatch({type: PERMISSION_MANAGER_REQUEST});
@@ -56,7 +56,7 @@ export const getRole = (addr, contract) => async dispatch => {
  * update role of an address
  * @param {string} role
  * @param {address} addr
- * @param {contract object} web3
+ * @param {contract object} contract
  */
 export const updateRole = (addr, role, contract) => async dispatch => {
     dispatch({type: PERMISSION_MANAGER_UPDATE_REQUEST});
