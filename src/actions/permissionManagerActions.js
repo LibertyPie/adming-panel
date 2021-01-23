@@ -1,6 +1,25 @@
-import { PERMISSION_MANAGER_ERROR, PERMISSION_MANAGER_REQUEST, PERMISSION_MANAGER_SUCCESS, PERMISSION_MANAGER_UPDATE_ERROR,
- PERMISSION_MANAGER_UPDATE_REQUEST, PERMISSION_MANAGER_UPDATE_SUCCESS } from "../constants";
+/**
+ * LibertyPie (https://libertypie.com)
+ * @author LibertyPie <hello@libertypie.com>
+ * @license MIT
+ */
 
+
+import { 
+    PERMISSION_MANAGER_ERROR,
+    PERMISSION_MANAGER_REQUEST, 
+    PERMISSION_MANAGER_SUCCESS,
+    PERMISSION_MANAGER_UPDATE_ERROR, 
+    PERMISSION_MANAGER_UPDATE_REQUEST, 
+    PERMISSION_MANAGER_UPDATE_SUCCESS } from "../constants";
+
+
+
+/**
+ * Get role of an address
+ * @param {address} addr
+ * @param {contract object} web3
+ */
 export const getRole = (addr, contract) => async dispatch => {
     dispatch({type: PERMISSION_MANAGER_REQUEST});
     try{
@@ -30,6 +49,15 @@ export const getRole = (addr, contract) => async dispatch => {
     }
 }
 
+
+
+
+/**
+ * update role of an address
+ * @param {string} role
+ * @param {address} addr
+ * @param {contract object} web3
+ */
 export const updateRole = (addr, role, contract) => async dispatch => {
     dispatch({type: PERMISSION_MANAGER_UPDATE_REQUEST});
     

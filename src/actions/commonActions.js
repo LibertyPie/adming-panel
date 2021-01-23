@@ -90,6 +90,7 @@ export const connectIfAuthorized = () => async dispatch =>  {
 /**
  * Private Function
  * hinitialize contract, account & permission manager
+ * @param {web3 obbject} web3
  */
 async function initialize(web3){
 
