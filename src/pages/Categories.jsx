@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { React, Component } from "react";
 import { AiFillFolderAdd } from "react-icons/ai";
 import BreadCrumb from "../components/BreadCrumb";
 import CategoryCard from "../components/Home/CategoryCard";
@@ -77,17 +77,21 @@ class Categories extends Component {
               {/* Main Page Content / Listing of categories */}
               <div className="row w100p ml0 mr0">
                 {this.props.list.map((cat, id) => (
-                  <div
-                    className={
-                      this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
-                    }
-                  >
-                    <CategoryCard
-                      openSubcat={this.openSubcat}
-                      cat={cat}
-                      id={id}
-                    />
-                  </div>
+                  <>
+                    {cat && (
+                      <div
+                        className={
+                          this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
+                        }
+                      >
+                        <CategoryCard
+                          openSubcat={this.openSubcat}
+                          cat={cat}
+                          id={id}
+                        />
+                      </div>
+                    )}
+                  </>
                 ))}
 
                 {/* Loading card */}

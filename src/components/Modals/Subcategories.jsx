@@ -23,21 +23,23 @@ class Subcategories extends Component {
         <br />
         <br />
         <table className="table">
-          {this.props.list
-            .filter((sub) => sub.name != "")
-            .map((subcat) => (
-              <tr>
-                <td width="60%">{subcat.name}</td>
-                <td>
-                  <EditSubcategory>
-                    <AiFillEdit />
-                  </EditSubcategory>
-                </td>
-                <td>
-                  <AiFillDelete />
-                </td>
-              </tr>
-            ))}
+          {this.props.list.map((subcat) => (
+            <>
+              {subcat.name && (
+                <tr>
+                  <td width="60%">{subcat.name}</td>
+                  <td>
+                    <EditSubcategory>
+                      <AiFillEdit />
+                    </EditSubcategory>
+                  </td>
+                  <td>
+                    <AiFillDelete />
+                  </td>
+                </tr>
+              )}
+            </>
+          ))}
         </table>
         <EditSubcategory>
           <div className="addSubcat-btn">Add New</div>

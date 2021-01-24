@@ -50,6 +50,7 @@ export const getSingleCategory = (id, contract) => async dispatch => {
 /**
  * create new category
  * @param {string} name
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const createNewCategory = (name, addr, contract) => async dispatch => {
@@ -72,6 +73,7 @@ export const createNewCategory = (name, addr, contract) => async dispatch => {
  * update an existing category
  * @param {integer} id
  * @param {string} name
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const updateCategory = (id, name, account, contract) => async dispatch => {
@@ -92,6 +94,7 @@ export const updateCategory = (id, name, account, contract) => async dispatch =>
 /**
  * delete an existing category
  * @param {integer} id
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const deleteCategory = (id, account, contract) => async dispatch => {
