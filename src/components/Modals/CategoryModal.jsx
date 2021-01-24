@@ -23,13 +23,13 @@ class CategoryModal extends Component {
 
   async componentDidMount() {
     if (this.props.categoryId) {
-      await this.props.getSingleCategory(
+      let name = await this.props.getSingleCategory(
         this.props.categoryId,
         this.props.contract
       );
 
       this.setState({
-        name: this.props.category_name,
+        name: name,
       });
     }
   }
@@ -45,10 +45,15 @@ class CategoryModal extends Component {
       await this.props.updateCategory(
         this.props.categoryId,
         this.state.name,
+        this.props.account,
         this.props.contract
       );
     } else {
-      await this.createNewCategory(this.state.name, this.props.contract);
+      await this.props.createNewCategory(
+        this.state.name,
+        this.props.account,
+        this.props.contract
+      );
     }
 
     if (!this.props.error) {
@@ -73,6 +78,7 @@ class CategoryModal extends Component {
                 <AiOutlinePlus />
               </div>
               <div className="name">
+                {this.props.categoryId}
                 <input
                   type="text"
                   placeholder="Category Name"
@@ -94,20 +100,20 @@ class CategoryModal extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { contract } = state.common;
+  const { contract, account } = state.common;
   const { id, category_name, loading, error } = state.category;
 
-  return { contract, id, category_name, loading, error };
+  return { contract, account, id, category_name, loading, error };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getSingleCategory: (id, contract) =>
       dispatch(getSingleCategory(id, contract)),
-    createNewCategory: (name, contract) =>
-      dispatch(createNewCategory(name, contract)),
-    updateCategory: (id, name, contract) =>
-      dispatch(updateCategory(id, name, contract)),
+    createNewCategory: (name, addr, contract) =>
+      dispatch(createNewCategory(name, addr, contract)),
+    updateCategory: (id, name, addr, contract) =>
+      dispatch(updateCategory(id, name, addr, contract)),
     getCategories: (contract) => dispatch(getCategories(contract)),
   };
 };

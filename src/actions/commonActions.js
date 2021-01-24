@@ -100,6 +100,7 @@ async function initialize(web3){
         var firstAcc = accounts[0];
 
         let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
+        console.log("contract", contract);
 
         let permissionManager = new web3.eth.Contract(libertypie_core, PERMISSION_MANAGER_CONTRACT);
 

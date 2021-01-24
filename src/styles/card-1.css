@@ -18,10 +18,14 @@
   vertical-align: middle;
 }
 
-.card-1 .img span {
-  margin-left: 20px;
+.card-1 .img span,
+.card-1 .img div {
+  /* margin-left: 20px; */
   font-weight: bold;
   color: #1b1b54;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
 }
 
 .card-1 .top-right {

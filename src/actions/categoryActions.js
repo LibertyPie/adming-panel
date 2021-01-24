@@ -18,7 +18,7 @@ import {
 export const getCategories = (contract) => async dispatch => {
     dispatch({type: CATEGORY_LIST_REQUEST});
     try{
-        let categories = await contract.getPaymentTypesCategories().call();
+        let categories = await contract.methods.getPaymentTypesCategories().call();
 
         dispatch({type: CATEGORY_LIST_SUCCESS, list: categories});
     }catch(e){
@@ -36,9 +36,10 @@ export const getCategories = (contract) => async dispatch => {
 export const getSingleCategory = (id, contract) => async dispatch => {
      dispatch({type: CATEGORY_SINGLE_REQUEST});
     try{
-        let category = await contract.addPaymentTypeCategory(id).call();
+        let category = await contract.methods.getCategoryById(id).call();
 
         dispatch({type: CATEGORY_SINGLE_SUCCESS, id: id, category: category});
+        return category;
     }catch(e){
         dispatch({type: CATEGORY_SINGLE_ERROR});
     }
@@ -51,13 +52,16 @@ export const getSingleCategory = (id, contract) => async dispatch => {
  * @param {string} name
  * @param {contract object} contract
  */
-export const createNewCategory = (name, contract) => async dispatch => {
+export const createNewCategory = (name, addr, contract) => async dispatch => {
     dispatch({type: CATEGORY_CU_REQUEST});
     try{
-        let id = await contract.addPaymentTypeCategory(name).call();
+        console.log(contract);
+        let id = await contract.methods.addPaymentTypeCategory(name).send({from: addr});
 
+        console.log(id);
         dispatch({type: CATEGORY_CU_SUCCESS, id: id, category: name});
     }catch(e){
+        console.log(e);
         dispatch({type: CATEGORY_CU_ERROR});
     }
 }
@@ -70,13 +74,14 @@ export const createNewCategory = (name, contract) => async dispatch => {
  * @param {string} name
  * @param {contract object} contract
  */
-export const updateCategory = (id, name, contract) => async dispatch => {
+export const updateCategory = (id, name, account, contract) => async dispatch => {
     dispatch({type: CATEGORY_CU_REQUEST});
     try{
-        await contract.updatePaymentTypeCategory(id, name).call();
+        await contract.methods.updatePaymentTypeCategory(id, name).send({from: account});
 
         dispatch({type: CATEGORY_CU_SUCCESS, id: id, category: name});
     }catch(e){
+        console.log(e);
         dispatch({type: CATEGORY_CU_ERROR});
     }
 }
@@ -89,10 +94,11 @@ export const updateCategory = (id, name, contract) => async dispatch => {
  * @param {integer} id
  * @param {contract object} contract
  */
-export const deleteCategory = (id, contract) => async dispatch => {
+export const deleteCategory = (id, account, contract) => async dispatch => {
     dispatch({type: CATEGORY_DELETE_REQUEST});
     try{
-        await contract.deletePaymentTypeCategory(id).call();
+        
+        await contract.methods.deletePaymentTypeCategory(id).send({from: account});
 
         dispatch({type: CATEGORY_DELETE_SUCCESS });
     }catch(e){

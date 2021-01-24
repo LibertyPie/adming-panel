@@ -11,13 +11,29 @@ import { getCategories } from "../actions/categoryActions";
 class Categories extends Component {
   state = {
     subCat: false,
+    selectedCat: null,
+    selectedCatName: null,
     categories: [],
   };
 
   // Toggle right side pannel for sub category
-  toggleSubcat = () => {
+  openSubcat = (cat, catName) => {
+    const that = this;
     this.setState({
-      subCat: !this.state.subCat,
+      subCat: false,
+    });
+    setTimeout((params) => {
+      that.setState({
+        subCat: true,
+        selectedCat: cat,
+        selectedCatName: catName,
+      });
+    }, 5);
+  };
+
+  closeSubCat = () => {
+    this.setState({
+      subCat: false,
     });
   };
 
@@ -60,13 +76,17 @@ class Categories extends Component {
 
               {/* Main Page Content / Listing of categories */}
               <div className="row w100p ml0 mr0">
-                {this.state.categories.map((id) => (
+                {this.props.list.map((cat, id) => (
                   <div
                     className={
                       this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
                     }
                   >
-                    <CategoryCard toggleCat={this.toggleSubcat} />
+                    <CategoryCard
+                      openSubcat={this.openSubcat}
+                      cat={cat}
+                      id={id}
+                    />
                   </div>
                 ))}
 
@@ -88,7 +108,11 @@ class Categories extends Component {
           {/* Subcategory panel */}
           {this.state.subCat && (
             <div className="col-md-4">
-              <Subcategories close={this.toggleSubcat} />
+              <Subcategories
+                close={this.closeSubCat}
+                catName={this.state.selectedCatName}
+                catId={this.state.selectedCat}
+              />
               <div className="sub-panel-mask"></div>
             </div>
           )}

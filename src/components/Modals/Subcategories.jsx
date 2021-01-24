@@ -8,10 +8,9 @@ class Subcategories extends Component {
   state = {};
 
   async componentDidMount() {
-    await this.props.getSubcategoryList(
-      this.props.category_id,
-      this.props.contract
-    );
+    console.log(this.props.catId);
+    console.log(this.props.contract);
+    await this.props.getSubcategoryList(this.props.catId, this.props.contract);
   }
 
   render() {
@@ -24,19 +23,21 @@ class Subcategories extends Component {
         <br />
         <br />
         <table className="table">
-          {this.props.list.map((subcat) => (
-            <tr>
-              <td width="60%">{subcat}</td>
-              <td>
-                <EditSubcategory>
-                  <AiFillEdit />
-                </EditSubcategory>
-              </td>
-              <td>
-                <AiFillDelete />
-              </td>
-            </tr>
-          ))}
+          {this.props.list
+            .filter((sub) => sub.name != "")
+            .map((subcat) => (
+              <tr>
+                <td width="60%">{subcat.name}</td>
+                <td>
+                  <EditSubcategory>
+                    <AiFillEdit />
+                  </EditSubcategory>
+                </td>
+                <td>
+                  <AiFillDelete />
+                </td>
+              </tr>
+            ))}
         </table>
         <EditSubcategory>
           <div className="addSubcat-btn">Add New</div>
@@ -55,7 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getSubcategoryList: (contract) => dispatch(getSubcategoryList(contract)),
+    getSubcategoryList: (id, contract) =>
+      dispatch(getSubcategoryList(id, contract)),
   };
 };
 
