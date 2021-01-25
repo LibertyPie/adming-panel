@@ -6,7 +6,7 @@
 
 import { Component } from "react";
 import { AiFillEdit, AiFillDelete, AiFillDatabase } from "react-icons/ai";
-import { deleteCategory } from "../../actions/categoryActions";
+import { deleteCategory, getCategories } from "../../actions/categoryActions";
 import CategoryModal from "../Modals/CategoryModal";
 import { connect } from "react-redux";
 
@@ -22,6 +22,8 @@ class CategoryCard extends Component {
       this.props.account,
       this.props.contract
     );
+
+    await this.props.getCategories(this.props.contract);
   };
 
   listSubCategories = () => {
@@ -73,6 +75,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteCategory: (id, account, contract) =>
       dispatch(deleteCategory(id, account, contract)),
+    getCategories: (contract) => dispatch(getCategories(contract)),
   };
 };
 

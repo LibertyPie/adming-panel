@@ -27,15 +27,15 @@ export default function (state = initialState, action) {
         id: action.id,
         category_name: action.category,
         error: false,
-        loading: true
+        loading: false
       }
       break;
 
     case CATEGORY_CU_ERROR:
       return {
         ...state,
-        error: false,
-        loading: true
+        error: true,
+        loading: false
       }
       break;
       
@@ -54,15 +54,15 @@ export default function (state = initialState, action) {
         id: action.id,
         category_name: action.category,
         error: false,
-        loading: true
+        loading: false
       }
       break;
 
     case CATEGORY_SINGLE_ERROR:
       return {
         ...state,
-        error: false,
-        loading: true
+        error: true,
+        loading: false
       }
       break;
 

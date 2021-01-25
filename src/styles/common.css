@@ -274,6 +274,8 @@ a:hover {
   background-color: #f5f8fe;
   font-weight: bold;
   color: #1b1b54;
+  width: 100%;
+  border: none !important;
 }
 
 .subcatForm .name input {

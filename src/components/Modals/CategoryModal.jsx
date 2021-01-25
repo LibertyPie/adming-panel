@@ -56,8 +56,10 @@ class CategoryModal extends Component {
       );
     }
 
-    if (!this.props.error) {
-      await this.props.getCategories(this.props.contract);
+    await this.props.getCategories(this.props.contract);
+
+    if (this.state.show) {
+      this.toggleModal();
     }
   };
 
@@ -74,11 +76,7 @@ class CategoryModal extends Component {
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body>
             <div className="catForm">
-              <div className="img">
-                <AiOutlinePlus />
-              </div>
               <div className="name">
-                {this.props.categoryId}
                 <input
                   type="text"
                   placeholder="Category Name"
@@ -89,9 +87,18 @@ class CategoryModal extends Component {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="link" onClick={this.saveCategory}>
-              Save
-            </div>
+            {!this.props.loading ? (
+              <div className="link" onClick={this.saveCategory}>
+                Save
+              </div>
+            ) : (
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            )}
           </Modal.Footer>
         </Modal>
       </span>

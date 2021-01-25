@@ -96,7 +96,7 @@ class Categories extends Component {
                 ))}
 
                 {/* Loading card */}
-                {this.props.loading && (
+                {(this.props.loading || this.props.loadingDelete) && (
                   <div className="col-lg-4 col-md-12">
                     <div className="card-1 text-center">
                       <img src="/images/loading.gif" alt="" />
@@ -128,8 +128,9 @@ class Categories extends Component {
 const mapStateToProps = (state) => {
   const { contract } = state.common;
   const { list, loading, error } = state.categoryList;
+  const { loadingDelete, errorDelete } = state.category;
 
-  return { contract, list, loading, error };
+  return { contract, list, loading, error, loadingDelete, errorDelete };
 };
 
 const mapDispatchToProps = (dispatch) => {
