@@ -59,7 +59,7 @@ class Subcategories extends Component {
           ))}
         </table>
         {(this.props.loading || this.props.loadingDelete) && (
-          <div class="lds-ring mb-4">
+          <div className="lds-ring mb-4">
             <div></div>
             <div></div>
             <div></div>
