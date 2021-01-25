@@ -32,7 +32,7 @@ class CategoryCard extends Component {
 
   render() {
     return (
-      <div className="card-1">
+      <div className={"card-1 " + (this.props.active && "active")}>
         {/* <span className="sm">0 Sucategories</span> */}
         <div className="top-right">
           <CategoryModal categoryId={this.props.id}>

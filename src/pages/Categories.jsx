@@ -19,6 +19,7 @@ class Categories extends Component {
   // Toggle right side pannel for sub category
   openSubcat = (cat, catName) => {
     const that = this;
+    const prev = this.state.selectedCat;
     this.setState({
       subCat: false,
     });
@@ -28,6 +29,14 @@ class Categories extends Component {
         selectedCat: cat,
         selectedCatName: catName,
       });
+
+      if (!prev) {
+        document
+          .getElementById("#cat-" + cat)
+          .scrollIntoView({ behavior: "smooth" });
+      } else {
+        document.getElementById("#cat-" + cat).scrollIntoView();
+      }
     }, 5);
   };
 
@@ -84,11 +93,13 @@ class Categories extends Component {
                           this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
                         }
                         key={id}
+                        id={"#cat-" + id}
                       >
                         <CategoryCard
                           openSubcat={this.openSubcat}
                           cat={cat}
                           id={id}
+                          active={this.state.selectedCat == id}
                         />
                       </div>
                     )
