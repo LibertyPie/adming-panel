@@ -30,32 +30,34 @@ class Subcategories extends Component {
         <div className="float-right link">
           <AiOutlineClose onClick={this.props.close} />
         </div>
-        <h2>Bank with a long name</h2>
+        <h2>{this.props.catName}</h2>
         <br />
         <br />
         <table className="table">
-          {this.props.list.map(
-            (subcat) =>
-              subcat.name && (
-                <tr key={subcat.id}>
-                  <td width="60%">{subcat.name}</td>
-                  <td>
-                    <EditSubcategory
-                      category_id={this.props.catId}
-                      subcatId={subcat.id}
-                    >
-                      <AiFillEdit className="link" />
-                    </EditSubcategory>
-                  </td>
-                  <td>
-                    <AiFillDelete
-                      className="link"
-                      onClick={() => this.deleteSubcat(subcat.id)}
-                    />
-                  </td>
-                </tr>
-              )
-          )}
+          <tbody>
+            {this.props.list.map(
+              (subcat) =>
+                subcat.name && (
+                  <tr key={subcat.id}>
+                    <td width="60%">{subcat.name}</td>
+                    <td>
+                      <EditSubcategory
+                        category_id={this.props.catId}
+                        subcatId={subcat.id}
+                      >
+                        <AiFillEdit className="link" />
+                      </EditSubcategory>
+                    </td>
+                    <td>
+                      <AiFillDelete
+                        className="link"
+                        onClick={() => this.deleteSubcat(subcat.id)}
+                      />
+                    </td>
+                  </tr>
+                )
+            )}
+          </tbody>
         </table>
         {(this.props.loading || this.props.loadingDelete) && (
           <div className="lds-ring mb-4">

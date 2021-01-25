@@ -27,7 +27,7 @@ class CategoryCard extends Component {
   };
 
   listSubCategories = () => {
-    this.props.openSubcat(this.props.id);
+    this.props.openSubcat(this.props.id, this.props.cat);
   };
 
   render() {
