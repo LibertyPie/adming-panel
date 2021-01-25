@@ -76,9 +76,9 @@ class Categories extends Component {
 
               {/* Main Page Content / Listing of categories */}
               <div className="row w100p ml0 mr0">
-                {this.props.list.map((cat, id) => (
-                  <>
-                    {cat && (
+                {this.props.list.map(
+                  (cat, id) =>
+                    cat && (
                       <div
                         className={
                           this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
@@ -91,9 +91,8 @@ class Categories extends Component {
                           id={id}
                         />
                       </div>
-                    )}
-                  </>
-                ))}
+                    )
+                )}
 
                 {/* Loading card */}
                 {(this.props.loading || this.props.loadingDelete) && (

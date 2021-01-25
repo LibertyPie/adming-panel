@@ -34,10 +34,10 @@ class Subcategories extends Component {
         <br />
         <br />
         <table className="table">
-          {this.props.list.map((subcat) => (
-            <>
-              {subcat.name && (
-                <tr>
+          {this.props.list.map(
+            (subcat) =>
+              subcat.name && (
+                <tr key={subcat.id}>
                   <td width="60%">{subcat.name}</td>
                   <td>
                     <EditSubcategory
@@ -54,9 +54,8 @@ class Subcategories extends Component {
                     />
                   </td>
                 </tr>
-              )}
-            </>
-          ))}
+              )
+          )}
         </table>
         {(this.props.loading || this.props.loadingDelete) && (
           <div className="lds-ring mb-4">
