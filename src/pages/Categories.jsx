@@ -19,7 +19,7 @@ class Categories extends Component {
   // Toggle right side pannel for sub category
   openSubcat = (cat, catName) => {
     const that = this;
-    const prev = this.state.selectedCat;
+    const prev = this.state.subCat;
     this.setState({
       subCat: false,
     });
