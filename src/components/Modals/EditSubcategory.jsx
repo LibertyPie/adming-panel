@@ -9,7 +9,7 @@ import {
 } from "../../actions/subcategoryActions";
 
 class EditSubcategory extends Component {
-  state = { show: false };
+  state = { show: false, name: "" };
 
   toggleModal = () => {
     this.setState({
@@ -17,12 +17,15 @@ class EditSubcategory extends Component {
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.props.subcatId) {
-      this.props.getSingleSubcategory(this.props.subcatId, this.props.contract);
+      let subcategory = await this.props.getSingleSubcategory(
+        this.props.subcatId,
+        this.props.contract
+      );
 
       this.setState({
-        name: this.props.subcategory_name,
+        name: subcategory[0],
       });
     }
   }
@@ -33,12 +36,14 @@ class EditSubcategory extends Component {
         this.props.subcatId,
         this.state.name,
         this.props.category_id,
+        this.props.account,
         this.props.contract
       );
     } else {
       this.props.createNewSubcategory(
         this.state.name,
         this.props.category_id,
+        this.props.account,
         this.props.contract
       );
     }
@@ -49,6 +54,12 @@ class EditSubcategory extends Component {
         this.props.contract
       );
     }
+  };
+
+  updateName = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
   };
 
   render() {
@@ -66,12 +77,17 @@ class EditSubcategory extends Component {
           <Modal.Body>
             <div className="subcatForm">
               <div className="name">
-                <input type="text" placeholder="Subategory Name" />
+                <input
+                  type="text"
+                  placeholder="Subategory Name"
+                  onChange={this.updateName}
+                  value={this.state.name}
+                />
               </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="link" onClick={this.toggleModal}>
+            <div className="link" onClick={this.saveSubCategory}>
               Save
             </div>
           </Modal.Footer>
@@ -82,11 +98,12 @@ class EditSubcategory extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { contract } = state.common;
+  const { contract, account } = state.common;
   const { id, cat_id, subcategory_name, loading, error } = state.subcategory;
 
   return {
     contract,
+    account,
     id,
     cat_id,
     subcategory_name,
@@ -99,12 +116,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getSubcategoryList: (id, contract) =>
       dispatch(getSubcategoryList(id, contract)),
-    getSingleCategory: (id, contract) =>
+    getSingleSubcategory: (id, contract) =>
       dispatch(getSingleSubcategory(id, contract)),
-    createNewCategory: (name, contract) =>
-      dispatch(createNewSubcategory(name, contract)),
-    updateCategory: (id, name, contract) =>
-      dispatch(updateSubcategory(id, name, contract)),
+    createNewSubcategory: (name, cat_id, account, contract) =>
+      dispatch(createNewSubcategory(name, cat_id, account, contract)),
+    updateSubcategory: (cat_id, name, id, account, contract) =>
+      dispatch(updateSubcategory(cat_id, name, id, account, contract)),
   };
 };
 

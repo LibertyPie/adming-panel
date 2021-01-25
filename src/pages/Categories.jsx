@@ -83,6 +83,7 @@ class Categories extends Component {
                         className={
                           this.state.subCat ? "col-sm-12" : "col-lg-4 col-sm-12"
                         }
+                        key={id}
                       >
                         <CategoryCard
                           openSubcat={this.openSubcat}

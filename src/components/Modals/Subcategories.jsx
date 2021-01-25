@@ -2,16 +2,25 @@ import { Component } from "react";
 import { AiOutlineClose, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import EditSubcategory from "./EditSubcategory";
 import { connect } from "react-redux";
-import { getSubcategoryList } from "../../actions/subcategoryActions";
+import {
+  deleteSubcategory,
+  getSubcategoryList,
+} from "../../actions/subcategoryActions";
 
 class Subcategories extends Component {
   state = {};
 
   async componentDidMount() {
-    console.log(this.props.catId);
-    console.log(this.props.contract);
     await this.props.getSubcategoryList(this.props.catId, this.props.contract);
   }
+
+  deleteSubcat = async (id) => {
+    await this.props.deleteSubcategory(
+      id,
+      this.props.account,
+      this.props.contract
+    );
+  };
 
   render() {
     return (
@@ -29,19 +38,25 @@ class Subcategories extends Component {
                 <tr>
                   <td width="60%">{subcat.name}</td>
                   <td>
-                    <EditSubcategory>
-                      <AiFillEdit />
+                    <EditSubcategory
+                      category_id={this.props.catId}
+                      subcatId={subcat.id}
+                    >
+                      <AiFillEdit className="link" />
                     </EditSubcategory>
                   </td>
                   <td>
-                    <AiFillDelete />
+                    <AiFillDelete
+                      className="link"
+                      onClick={() => this.deleteSubcat(subcat.id)}
+                    />
                   </td>
                 </tr>
               )}
             </>
           ))}
         </table>
-        <EditSubcategory>
+        <EditSubcategory category_id={this.props.catId}>
           <div className="addSubcat-btn">Add New</div>
         </EditSubcategory>
       </div>
@@ -50,16 +65,18 @@ class Subcategories extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { contract } = state.common;
+  const { contract, account } = state.common;
   const { list, loading, error } = state.subcategoryList;
 
-  return { contract, list, loading, error };
+  return { contract, account, list, loading, error };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getSubcategoryList: (id, contract) =>
       dispatch(getSubcategoryList(id, contract)),
+    deleteSubcategory: (id, account, contract) =>
+      dispatch(deleteSubcategory(id, account, contract)),
   };
 };
 
