@@ -98,11 +98,9 @@ class Categories extends Component {
                 {/* Loading card */}
                 {this.props.loading && (
                   <div className="col-lg-4 col-md-12">
-                    {/* Card for the category */}
                     <div className="card-1 text-center">
                       <img src="/images/loading.gif" alt="" />
                     </div>
-                    {/* Card Ends */}
                   </div>
                 )}
               </div>

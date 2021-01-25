@@ -20,6 +20,8 @@ class Subcategories extends Component {
       this.props.account,
       this.props.contract
     );
+
+    await this.props.getSubcategoryList(this.props.catId, this.props.contract);
   };
 
   render() {
@@ -56,6 +58,14 @@ class Subcategories extends Component {
             </>
           ))}
         </table>
+        {(this.props.loading || this.props.loadingDelete) && (
+          <div class="lds-ring mb-4">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
         <EditSubcategory category_id={this.props.catId}>
           <div className="addSubcat-btn">Add New</div>
         </EditSubcategory>
@@ -67,8 +77,17 @@ class Subcategories extends Component {
 const mapStateToProps = (state) => {
   const { contract, account } = state.common;
   const { list, loading, error } = state.subcategoryList;
+  const { loadingDelete, errorDelete } = state.subcategory;
 
-  return { contract, account, list, loading, error };
+  return {
+    contract,
+    account,
+    list,
+    loading,
+    error,
+    loadingDelete,
+    errorDelete,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

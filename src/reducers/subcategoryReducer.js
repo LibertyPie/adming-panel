@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
         cat_id: action.cat_id,
         subcategory_name: action.name,
         error: false,
-        loading: true
+        loading: false
       }
       break;
 
@@ -58,7 +58,7 @@ export default function (state = initialState, action) {
         cat_id: action.cat_id,
         subcategory_name: action.category,
         error: false,
-        loading: true
+        loading: false
       }
       break;
 

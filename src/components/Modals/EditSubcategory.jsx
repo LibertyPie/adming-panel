@@ -32,7 +32,7 @@ class EditSubcategory extends Component {
 
   saveSubCategory = async () => {
     if (this.props.subcatId) {
-      this.props.updateSubcategory(
+      await this.props.updateSubcategory(
         this.props.subcatId,
         this.state.name,
         this.props.category_id,
@@ -40,7 +40,7 @@ class EditSubcategory extends Component {
         this.props.contract
       );
     } else {
-      this.props.createNewSubcategory(
+      await this.props.createNewSubcategory(
         this.state.name,
         this.props.category_id,
         this.props.account,
@@ -48,11 +48,13 @@ class EditSubcategory extends Component {
       );
     }
 
-    if (!this.props.error) {
-      await this.props.getSubcategoryList(
-        this.props.category_id,
-        this.props.contract
-      );
+    await this.props.getSubcategoryList(
+      this.props.category_id,
+      this.props.contract
+    );
+
+    if (this.state.show) {
+      this.toggleModal();
     }
   };
 
@@ -87,9 +89,18 @@ class EditSubcategory extends Component {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="link" onClick={this.saveSubCategory}>
-              Save
-            </div>
+            {!this.props.loading ? (
+              <div className="link" onClick={this.saveSubCategory}>
+                Save
+              </div>
+            ) : (
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            )}
           </Modal.Footer>
         </Modal>
       </span>
