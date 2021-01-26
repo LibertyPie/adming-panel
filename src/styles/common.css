@@ -380,3 +380,32 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+.placeholder {
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: 20px;
+  background-color: #eee;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.animated-background {
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, #f3baba 10%, #c79b9b 18%, #f7d1cb 33%);
+  background-size: 400px 80px;
+  height: 20px;
+  position: relative;
+}

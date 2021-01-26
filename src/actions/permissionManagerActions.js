@@ -25,19 +25,19 @@ export const getRole = (addr, contract) => async dispatch => {
     try{
         let role = "USER";
 
-        let is_super_admin = await contract.isSuperAdmin(addr).call();
+        let is_super_admin = await contract.methods.isSuperAdmin(addr).call();
 
         if(is_super_admin){
             role = "SUPER ADMIN";
         }
 
-        let is_admin = await contract.isAdmin(addr).call();
+        let is_admin = await contract.methods.isAdmin(addr).call();
 
         if(is_admin){
             role = "ADMIN";
         }
 
-        let is_moderator = await contract.isModerator(addr).call();
+        let is_moderator = await contract.methods.isModerator(addr).call();
 
         if(is_moderator){
             role = "MODERATOR";
@@ -45,6 +45,7 @@ export const getRole = (addr, contract) => async dispatch => {
 
         dispatch({type: PERMISSION_MANAGER_SUCCESS, role: role});
     }catch(e){
+        console.log(e);
         dispatch({type: PERMISSION_MANAGER_ERROR});
     }
 }
@@ -58,12 +59,12 @@ export const getRole = (addr, contract) => async dispatch => {
  * @param {address} addr
  * @param {contract object} contract
  */
-export const updateRole = (addr, role, contract) => async dispatch => {
+export const updateRole = (addr, web3, _role, contract) => async dispatch => {
     dispatch({type: PERMISSION_MANAGER_UPDATE_REQUEST});
     
     try{
-
-        await contract.addRole(role, addr).call();
+        let role = web3.utils.fromAscii(_role);
+        await contract.methods.addRole(role, addr).call();
 
         dispatch({type: PERMISSION_MANAGER_UPDATE_SUCCESS});
     }catch(error){

@@ -60,11 +60,8 @@ class Subcategories extends Component {
           </tbody>
         </table>
         {(this.props.loading || this.props.loadingDelete) && (
-          <div className="lds-ring mb-4">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+          <div class="placeholder mb-4">
+            <div class="animated-background"></div>
           </div>
         )}
         <EditSubcategory category_id={this.props.catId}>
