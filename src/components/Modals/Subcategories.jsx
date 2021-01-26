@@ -10,10 +10,17 @@ import {
 class Subcategories extends Component {
   state = {};
 
+  /**
+   * Load subcategory list
+   */
   async componentDidMount() {
     await this.props.getSubcategoryList(this.props.catId, this.props.contract);
   }
 
+  /**
+   * delete subcategory of id
+   * @param {int} id
+   */
   deleteSubcat = async (id) => {
     await this.props.deleteSubcategory(
       id,

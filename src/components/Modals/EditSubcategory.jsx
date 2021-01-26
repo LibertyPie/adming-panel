@@ -11,12 +11,18 @@ import {
 class EditSubcategory extends Component {
   state = { show: false, name: "" };
 
+  /**
+   * Toggle current modal
+   */
   toggleModal = () => {
     this.setState({
       show: !this.state.show,
     });
   };
 
+  /**
+   * Load subcategory if called with an id
+   */
   async componentDidMount() {
     if (this.props.subcatId) {
       let subcategory = await this.props.getSingleSubcategory(
@@ -30,6 +36,9 @@ class EditSubcategory extends Component {
     }
   }
 
+  /**
+   * save subcategory by calling create or update
+   */
   saveSubCategory = async () => {
     if (this.props.subcatId) {
       await this.props.updateSubcategory(
@@ -48,16 +57,22 @@ class EditSubcategory extends Component {
       );
     }
 
+    // load updated list of subcategory
     await this.props.getSubcategoryList(
       this.props.category_id,
       this.props.contract
     );
 
+    //close the modal
     if (this.state.show) {
       this.toggleModal();
     }
   };
 
+  /**
+   * update name state
+   * @param {*} event
+   */
   updateName = (event) => {
     this.setState({
       name: event.target.value,

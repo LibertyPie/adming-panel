@@ -14,18 +14,29 @@ class PermissionManager extends Component {
     await this.props.getRole(this.props.account, this.props.permissionManager);
   }
 
+  /**
+   * update role state
+   * @param {*} event
+   */
   updateRole = (event) => {
     this.setState({
       role: event.target.value,
     });
   };
 
+  /**
+   * update address state
+   * @param {*} event
+   */
   updateAddress = (event) => {
     this.setState({
-      add: event.target.value,
+      addr: event.target.value,
     });
   };
 
+  /**
+   * save role
+   */
   saveRole = async () => {
     await this.props.updateRole(
       this.state.addr,

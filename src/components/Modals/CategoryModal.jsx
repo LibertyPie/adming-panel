@@ -15,12 +15,18 @@ class CategoryModal extends Component {
     name: "",
   };
 
+  /**
+   * Toggle current modal
+   */
   toggleModal = () => {
     this.setState({
       show: !this.state.show,
     });
   };
 
+  /**
+   * load category if called with a category id
+   */
   async componentDidMount() {
     if (this.props.categoryId) {
       let name = await this.props.getSingleCategory(
@@ -34,12 +40,19 @@ class CategoryModal extends Component {
     }
   }
 
+  /**
+   * update name state
+   * @param {*} event
+   */
   updateName = (event) => {
     this.setState({
       name: event.target.value,
     });
   };
 
+  /**
+   * save category by calling create or update
+   */
   saveCategory = async () => {
     if (this.props.categoryId) {
       await this.props.updateCategory(
@@ -56,8 +69,10 @@ class CategoryModal extends Component {
       );
     }
 
+    // refresh listing
     await this.props.getCategories(this.props.contract);
 
+    //close the modal
     if (this.state.show) {
       this.toggleModal();
     }

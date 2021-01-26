@@ -58,6 +58,7 @@ export const getSingleSubcategory = (id, contract) => async dispatch => {
  * create new subcategory
  * @param {string} name
  * @param {integer} cat_id
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const createNewSubcategory = (name, cat_id, addr, contract) => async dispatch => {
@@ -80,6 +81,7 @@ export const createNewSubcategory = (name, cat_id, addr, contract) => async disp
  * @param {integer} id
  * @param {string} name
  * @param {integer} cat_id
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const updateSubcategory = (id, name, cat_id, addr, contract) => async dispatch => {
@@ -100,6 +102,7 @@ export const updateSubcategory = (id, name, cat_id, addr, contract) => async dis
 /**
  * delete an existing subcategory
  * @param {integer} id
+ * @param {address} addr
  * @param {contract object} contract
  */
 export const deleteSubcategory = (id, addr, contract) => async dispatch => {

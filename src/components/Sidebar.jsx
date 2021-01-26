@@ -8,6 +8,9 @@ class Sidebar extends Component {
     active: false,
   };
 
+  /**
+   * Toggle sidebar ( only for mobile devices )
+   */
   toggleSidebar = () => {
     this.setState({
       active: !this.state.active,

@@ -56,6 +56,7 @@ export const getRole = (addr, contract) => async dispatch => {
 /**
  * update role of an address
  * @param {string} role
+ * @param {web3} web3
  * @param {address} addr
  * @param {contract object} contract
  */

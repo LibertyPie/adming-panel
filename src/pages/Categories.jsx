@@ -16,13 +16,21 @@ class Categories extends Component {
     categories: [],
   };
 
-  // Toggle right side pannel for sub category
+  /**
+   * open the subcategory menu
+   * @param {int} cat
+   * @param {string} catName
+   */
   openSubcat = (cat, catName) => {
     const that = this;
     const prev = this.state.subCat;
+
+    //hide the subcategory
     this.setState({
       subCat: false,
     });
+
+    // create a delay and then show the subcategory menu
     setTimeout((params) => {
       that.setState({
         subCat: true,
@@ -40,12 +48,18 @@ class Categories extends Component {
     }, 5);
   };
 
+  /**
+   * Close subcategory panel
+   */
   closeSubCat = () => {
     this.setState({
       subCat: false,
     });
   };
 
+  /**
+   * Load category list
+   */
   async componentDidMount() {
     await this.props.getCategories(this.props.contract);
   }

@@ -26,14 +26,16 @@ class CategoryCard extends Component {
     await this.props.getCategories(this.props.contract);
   };
 
-  listSubCategories = () => {
-    this.props.openSubcat(this.props.id, this.props.cat);
+  /**
+   * List Subcategories
+   */
+  listSubCategories = async () => {
+    await this.props.openSubcat(this.props.id, this.props.cat);
   };
 
   render() {
     return (
       <div className={"card-1 " + (this.props.active && "active")}>
-        {/* <span className="sm">0 Sucategories</span> */}
         <div className="top-right">
           <CategoryModal categoryId={this.props.id}>
             <span className="link">
@@ -51,14 +53,10 @@ class CategoryCard extends Component {
         <br />
         <div className="clear"></div>
         <div className="img">
-          {/* <img src="/images/example.png" alt="" /> */}
           <div>{this.props.cat}</div>
         </div>
         <br />
         <br />
-        {/* <span className="link block" onClick={this.listSubCategories}>
-          Add Subcategories
-        </span> */}
       </div>
     );
   }
