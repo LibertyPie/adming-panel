@@ -16,16 +16,23 @@ import { GUEST_REDIRECT, USER_REDIRECT } from "./config";
 
 class App extends Component {
 
+  state = {
+    ready: false
+  }
 
-  componentDidMount(){
+  async componentDidMount(){
     //on load check if user is already connected, if so load web3
-    this.props.connectIfAuthorized();
+    await this.props.connectIfAuthorized();
+
+    this.setState({
+      ready: true
+    })
   }
 
   render() {
     return (
       <div className="App">
-        {/* Switch between routes */}
+        {this.state.ready &&
         <Switch>
           {/* Loop through routes defined under routes.js page */}
               {routes.map((route, i) => (
@@ -35,6 +42,7 @@ class App extends Component {
                   />
               ))}
           </Switch>
+          }
       </div>
     );
   }
