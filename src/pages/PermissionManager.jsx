@@ -2,7 +2,11 @@ import { Component } from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Sidebar from "../components/Sidebar";
 import { connect } from "react-redux";
-import { getRole, updateRole } from "../actions/permissionManagerActions";
+import {
+  getRole,
+  updateRole,
+  revokeRole,
+} from "../actions/permissionManagerActions";
 
 class PermissionManager extends Component {
   state = {
@@ -40,8 +44,20 @@ class PermissionManager extends Component {
   saveRole = async () => {
     await this.props.updateRole(
       this.state.addr,
+      this.props.web3,
       this.state.role,
-      this.props.contract
+      this.props.account,
+      this.props.permissionManager
+    );
+  };
+
+  revokeRole = async () => {
+    await this.props.revokeRole(
+      this.state.addr,
+      this.props.web3,
+      this.state.role,
+      this.props.account,
+      this.props.permissionManager
     );
   };
 
@@ -78,18 +94,24 @@ class PermissionManager extends Component {
                         onChange={this.updateAddress}
                       />
                       <select onChange={this.updateRole}>
-                        <option disabled>Roles</option>
-                        <option value="SUPER ADMIN">SUPER ADMIN</option>
-                        <option value="ADMIN">ADMIN</option>
-                        <option value="MODERATOR">MODERATOR</option>
+                        <option>Roles</option>
+                        <option value="DEFAULT_ADMIN_ROLE">SUPER ADMIN</option>
+                        <option value="ADMIN_ROLE">ADMIN</option>
+                        <option value="MODERATOR_ROLE">MODERATOR</option>
                       </select>
                     </div>
                     <div className="float-right">
                       <div
                         className="connect-btn small"
+                        onClick={this.revokeRole}
+                      >
+                        Revoke
+                      </div>
+                      <div
+                        className="connect-btn small"
                         onClick={this.saveRole}
                       >
-                        Save
+                        Approve
                       </div>
                     </div>
                     <div className="clear"></div>
@@ -136,8 +158,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getRole: (addr, contract) => dispatch(getRole(addr, contract)),
-    updateRole: (addr, web3, role, contract) =>
-      dispatch(updateRole(addr, web3, role, contract)),
+    updateRole: (addr, web3, role, account, contract) =>
+      dispatch(updateRole(addr, web3, role, account, contract)),
+    revokeRole: (addr, web3, role, account, contract) =>
+      dispatch(revokeRole(addr, web3, role, account, contract)),
   };
 };
 

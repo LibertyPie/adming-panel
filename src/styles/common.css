@@ -285,6 +285,7 @@ a:hover {
 /* Forms and modals end, */
 
 .connect-btn {
+  display: inline-block;
   cursor: pointer;
   padding: 20px;
   font-size: 20px;
@@ -293,6 +294,10 @@ a:hover {
   margin-top: 20%;
   text-transform: uppercase;
   border-radius: 20px;
+}
+
+.connect-btn + .connect-btn {
+  margin-left: 20px;
 }
 
 .connect-btn.small {

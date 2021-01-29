@@ -8,6 +8,7 @@
 
 import Web3 from "web3";
 import { libertypie_core } from "../abi/libertypie_core";
+import { permission_manager } from "../abi/permission_manager";
 import { CONTRACT_ADDRESS, PERMISSION_MANAGER_CONTRACT } from "../config";
 import { WALLET_CONNECT_ERROR, WALLET_CONNECT_REQUEST, WALLET_CONNECT_SUCCESS } from "../constants";
 
@@ -102,7 +103,7 @@ async function initialize(web3){
         let contract = new web3.eth.Contract(libertypie_core, CONTRACT_ADDRESS);
         console.log("contract", contract);
 
-        let permissionManager = new web3.eth.Contract(libertypie_core, PERMISSION_MANAGER_CONTRACT);
+        let permissionManager = new web3.eth.Contract(permission_manager, PERMISSION_MANAGER_CONTRACT);
 
         return({web3: web3, contract: contract, account: firstAcc, permissionManager: permissionManager});
     }
